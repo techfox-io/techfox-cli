@@ -31,10 +31,15 @@ function initCommander(props) {
 		console.error(chalk.red("You're missing project name!!"))
 		console.log()
 		console.log('For example:')
-		console.log(` techfox-react-native ${chalk.cyan('--init')} ${chalk.green('techfox-example')}`)
+		console.log(
+			`techfox-cli ${chalk.cyan('--init-react')}
+				or
+				${chalk.cyan('--init-react-native')}
+				${chalk.green('techfox-example')}`
+			)
 		console.log()
 		console.log(
-			`Run techfox-react-native ${chalk.cyan(`--help`)} to see all options.`
+			`Run techfox-cli ${chalk.cyan(`--help`)} to see all options.`
 		)
 		process.exit(1)
 	}
@@ -43,14 +48,14 @@ function initCommander(props) {
 		const name = props.name
 		const root = process.cwd()
 
-		console.log(`Creating a new React Native app in ${chalk.green(process.cwd())}.`)
+		console.log(`Creating a new app in ${chalk.green(process.cwd())}.`)
 		console.log('Project:', chalk.yellowBright(name))
 		console.log('Version:', chalk.yellowBright('1.0.0'))
 		console.log('Author:', chalk.yellowBright('TechFox JSC <contact@techfox.io>'))
 		console.log('Website:', chalk.green('https://techfox.io'))
 		console.log()
 
-		console.log('Creating React Native App: ', chalk.green('Starting!!'))
+		console.log('Processing: ', chalk.green('Starting!!'))
 
 		const dir = path.join(root, name)
 		let packageJson
@@ -86,7 +91,7 @@ function initCommander(props) {
 			JSON.stringify(packageJson, null, 2) + os.EOL
 		)
 
-		console.log("Creating React Native App:", chalk.green('Finished!!'))
+		console.log("Processing:", chalk.green('Finished!!'))
 	}
 
 	return {

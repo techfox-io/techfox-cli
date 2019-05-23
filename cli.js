@@ -16,7 +16,8 @@ function run() {
 	const program = new commander.Command(packageJson.name)
 		.arguments('<argument>')
 		.usage(`${chalk.green('[options]')} ${chalk.red('[argument]')}`)
-		.option('-i, --init <string>', 'An project name', (name) => init(name))
+		.option('--init-react <string>', 'An react project name', (name) => init(name))
+		.option('--init-react-native <string>', 'An react native project name', (name) => init(name))
 		.option('-v, --version', 'Print CLI version', () => version())
 		.option('--verbose', 'Increase logging verbosity', () => verbose())
 		.on('--help', () => {
@@ -26,7 +27,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/techfox-react-native'
+					'https://github.com/techfox/techfox-io'
 				)}`
 			)
 			console.log()
@@ -35,7 +36,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/techfox-react-native/issues/new'
+					'https://github.com/techfox/techfox-io/issues/new'
 				)}`
 			)
 			console.log()
@@ -74,7 +75,7 @@ function showLogoCompany() {
 }
 
 function version() {
-	console.log('techfox-react-native-cli:', chalk.green(packageJson.version))
+	console.log('techfox-cli:', chalk.green(packageJson.version))
 	console.log('react-native:', chalk.green(packageJson.dependencies['react-native']))
 }
 
