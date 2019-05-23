@@ -27,7 +27,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/techfox-io'
+					'https://github.com/techfox-io/techfox-cli'
 				)}`
 			)
 			console.log()
@@ -36,7 +36,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/techfox-io/issues/new'
+					'https://github.com/techfox-io/techfox-cli/issues/new'
 				)}`
 			)
 			console.log()
