@@ -6,7 +6,7 @@ const chalk = require('chalk')
 const commander = require("commander")
 const figlet = require('figlet')
 
-const TechFoxCRA = require('./tasks/techfox-rn-cra.js')
+const InitCommander = require('./commanders/init-commander')
 
 showLogoCompany()
 
@@ -16,7 +16,8 @@ function run() {
 	const program = new commander.Command(packageJson.name)
 		.arguments('<argument>')
 		.usage(`${chalk.green('[options]')} ${chalk.red('[argument]')}`)
-		.option('-i, --init <string>', 'An project name', (name) => init(name))
+		.option('--init-react <string>', 'An react project name', (name) => init(name))
+		.option('--init-react-native <string>', 'An react native project name', (name) => init(name))
 		.option('-v, --version', 'Print CLI version', () => version())
 		.option('--verbose', 'Increase logging verbosity', () => verbose())
 		.on('--help', () => {
@@ -26,7 +27,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/teachfox-react-native'
+					'https://github.com/techfox-io/techfox-cli'
 				)}`
 			)
 			console.log()
@@ -35,7 +36,7 @@ function run() {
 			)
 			console.log(
 				`      ${chalk.cyan(
-					'https://github.com/techfox/teachfox-react-native/issues/new'
+					'https://github.com/techfox-io/techfox-cli/issues/new'
 				)}`
 			)
 			console.log()
@@ -64,6 +65,8 @@ function run() {
 }
 
 function showLogoCompany() {
+	console.log('Welcome to TechFox JSC!!')
+	console.log()
 	console.log(
 		chalk.yellowBright(
 			figlet.textSync('TechFox JSC', { horizontalLayout: 'full' })
@@ -72,7 +75,7 @@ function showLogoCompany() {
 }
 
 function version() {
-	console.log('techfox-react-native-cli:', chalk.green(packageJson.version))
+	console.log('techfox-cli:', chalk.green(packageJson.version))
 	console.log('react-native:', chalk.green(packageJson.dependencies['react-native']))
 }
 
@@ -81,6 +84,5 @@ function verbose() {
 }
 
 function init(name) {
-	console.log(chalk.green(`Creating a new React app ${name}`))
-	new TechFoxCRA(name).run()
+	new InitCommander({ name }).autoGenerate()
 }
